@@ -58,8 +58,17 @@ Each Variant contains the following files
   <li>Italian</li>
   </ul>
     <br>
+    
+   
  Check  <a href="https://github.com/johnolafenwa/Ling10/releases">The Release</a> to Download The datasets 
+ 
+ <h3>Sample Code</h3>
+ Check our example classification script in keras. 
+    <br> <a href="https://github.com/johnolafenwa/Ling10/blob/master/keras-classification.py">Keras Language Classification</a>
+ 
   You can reach to us via our contacts below:
+  
+  
   
   <br><br>
   <b>John Olafenwa</b> <br>
