@@ -1,9 +1,9 @@
 # Ling10
-A dataset of 190 000 sentences categorized into 10 languages, primarily for Language Detection tasks. This repository containes the dataset and code for processing it.
+A dataset of 190 000 sentences categorized into 10 languages, primarily for Language Detection and Benchmarking NLP Algorithms. This repository containes the dataset and code for processing it.
 <hr>
 <h1> Purpose </h1>
 <div style="font-family: 30px Calibri;" ><br><span>
-        This dataset is meant for use by researchers aiming to use machine learning techniques to build automatic language detection tasks.<br>
+        This dataset is meant for use by researchers aiming to use machine learning techniques to build automatic language detection algorithms.<br>
   It is also aimed at Evaluating the general effectiveness of newly developed Techniques for Natural Language Processing.
   This is a well organized Benchmark and we hope you find this useful in your research works.
   </b> 
@@ -26,16 +26,14 @@ Ling10 is released in three variants
   </ul>
     
 Each Variant contains the following files
-  
-  
-File Descriptions
-<h3>train_set.txt<h3>
+ 
+<h3>train_set.txt</h3>
 	Contains sentences for training and integer labels representing the language classes
 
 <h3>test_set.txt</h3>
 	Contains sentences for testing and integer labels representing the language classes
 	
-Both the train and test files are organized as sentence - label pairs with the tab characer "\t" separating them.
+<h5>Both the train and test files are organized as sentence - label pairs with the tab characer "\t" separating them.<h5>
 
 <h3>chars.json</h3>
 	A single json file containing two arrays: "char_to_idx" mapping characters to Integers and "idx_to_char" mapping Integers to characters
