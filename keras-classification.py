@@ -8,10 +8,10 @@ from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint,LearningRateScheduler,ReduceLROnPlateau
 
 from zipfile import ZipFile
-import urllib.request
+import requests
+import shutil
 import os
 import json
-from pandas._libs.period import extract_ordinals
 from io import open
 
 LING10_TRAIN_LARGE = "Ling10-trainlarge"
@@ -27,8 +27,12 @@ DATA_FILE = os.path.join(DATA_DIR,LING10_TRAIN_LARGE+".zip")
 
 #DONWLOAD THE DATA IF IT DOESN'T EXIST
 if not os.path.exists(DATA_FILE):
-    urllib.request.urlretrieve("https://github.com/johnolafenwa/Ling10/releases/download/1.0.0/{}.zip".format(LING10_TRAIN_LARGE),DATA_FILE)
+    data = requests.get("https://github.com/johnolafenwa/Ling10/releases/download/1.0.0/{}.zip".format(LING10_TRAIN_LARGE),stream=True)
 
+    with open(DATA_FILE,"wb") as file:
+        shutil.copyfileobj(data.raw,file)
+
+    del data
 
 train_file = os.path.join(DATA_DIR,LING10_TRAIN_LARGE,"train_set.txt")
 test_file = os.path.join(DATA_DIR,LING10_TRAIN_LARGE,"test_set.txt")
@@ -100,12 +104,11 @@ print(test_y.shape)
 
 #DEFINE THE MODEL
 model = Sequential()
-model.add(GRU(256,activation="relu",input_shape=train_x.shape[1:],return_sequences=True))
-model.add(GRU(256,activation="relu"))
+model.add(GRU(256,activation="relu",input_shape=train_x.shape[1:]))
 model.add(Dense(10,activation="softmax"))
 
 #Compile the model
-model.compile(optimizer=Adam(0.001),loss="categorical_crossentropy",metrics=["mse","accuracy"])
+model.compile(optimizer=Adam(0.01),loss="categorical_crossentropy",metrics=["mse","accuracy"])
 
 #Print full summary of the model
 model.summary()
